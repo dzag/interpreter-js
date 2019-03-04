@@ -1,0 +1,21 @@
+{
+  "name": "interpreter-js",
+  "version": "0.0.1",
+  "description": "A monkey programming language interpreter written in typescript",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "jest",
+    "test:w": "jest --watchAll",
+    "start": "ts-node src/index.ts"
+  },
+  "author": "Long Nguyen",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^24.0.9",
+    "jest": "^24.1.0",
+    "ts-jest": "^24.0.0",
+    "ts-node": "^8.0.2",
+    "ts-node-dev": "^1.0.0-pre.32",
+    "typescript": "^3.3.3333"
+  }
+}
