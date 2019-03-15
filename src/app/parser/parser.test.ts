@@ -17,8 +17,12 @@ describe('parse program', () => {
     expect(program).not.toBe(null);
   });
 
+  if (!program) {
+    return;
+  }
+
   test('program statements can contain only 3 statements', () => {
-    expect(program.statements).toBe(3);
+    expect(program.statements.length).toBe(3);
   });
 
   const tests = [
@@ -34,20 +38,20 @@ describe('parse program', () => {
 
 function testLetStatement (statement: Statement, name: string) {
 
-  test('statement.tokenLiteral is let', () => {
+  test('statement.tokenLiteral is `let`', () => {
     expect(statement.tokenLiteral()).toBe('let');
   });
 
-  test('statement is LetStatement', () => {
+  test(`statement is 'LetStatement'`, () => {
     expect(statement).toBeInstanceOf(LetStatement);
   });
 
   const letStatement: LetStatement = statement as LetStatement;
-  test(`letStatement.Name.Value is ${name}, current ${letStatement.name.value}`, () => {
+  test(`letStatement.name.value is '${name}', current '${letStatement.name.value}'`, () => {
     expect(letStatement.name.value).toBe(name);
   });
 
-  test(`name is ${name}, current ${letStatement.name.tokenLiteral()}`, () => {
+  test(`name is '${name}', current '${letStatement.name.tokenLiteral()}'`, () => {
     expect(letStatement.name.tokenLiteral()).toBe(name);
   });
 
