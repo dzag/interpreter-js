@@ -9,23 +9,6 @@ const isDigit = (character: string): boolean => {
   return '0' <= character && character <= '9';
 };
 
-const COMMON_TYPES: { [p: string]: TokenType } = {
-  '=': TokenType.ASSIGN,
-  '+': TokenType.PLUS,
-  '-': TokenType.MINUS,
-  '!': TokenType.BANG,
-  '*': TokenType.ASTERISK,
-  '/': TokenType.SLASH,
-  '<': TokenType.LT,
-  '>': TokenType.GT,
-  ',': TokenType.COMMA,
-  ';': TokenType.SEMICOLON,
-  '(': TokenType.LPAREN,
-  ')': TokenType.RPAREN,
-  '{': TokenType.LBRACE,
-  '}': TokenType.RBRACE,
-};
-
 export class Lexer {
 
   input: string;
@@ -45,24 +28,79 @@ export class Lexer {
     this.skipWhiteSpace();
 
     let token = new Token();
-    token.literal = this.character;
+    switch (this.character) {
+      case '=':
+        if (this.peekChar() === '=') {
+          const char = this.character;
+          this.readCharacter();
+          token = Token.new(
+            TokenType.EQ,
+            char + this.character,
+          );
+        } else {
+          token = Token.new(TokenType.ASSIGN, this.character);
+        }
+        break;
+      case '+':
+        token = Token.new(TokenType.PLUS, this.character);
+        break;
+      case '-':
+        token = Token.new(TokenType.MINUS, this.character);
+        break;
+      case '!':
+        if (this.peekChar() === '=') {
+          const char = this.character;
+          this.readCharacter();
+          token = Token.new(
+            TokenType.NOT_EQ,
+            char + this.character,
+          );
+        } else {
+          token = Token.new(TokenType.BANG, this.character);
+        }
+        break;
+      case '*':
+        token = Token.new(TokenType.ASTERISK, this.character);
+        break;
+      case '/':
+        token = Token.new(TokenType.SLASH, this.character);
+        break;
+      case '<':
+        token = Token.new(TokenType.LT, this.character);
+        break;
+      case '>':
+        token = Token.new(TokenType.GT, this.character);
+        break;
+      case ';':
+        token = Token.new(TokenType.SEMICOLON, this.character);
+        break;
+      case '(':
+        token = Token.new(TokenType.LPAREN, this.character);
+        break;
+      case ')':
+        token = Token.new(TokenType.RPAREN, this.character);
+        break;
+      case ',':
+        token = Token.new(TokenType.COMMA, this.character);
+        break;
+      case '{':
+        token = Token.new(TokenType.LBRACE, this.character);
+        break;
+      case '}':
+        token = Token.new(TokenType.RBRACE, this.character);
+        break;
+      default:
+        if (isLetter(this.character)) {
+          token.literal = this.readIdentifier();
+          token.type = Token.lookupIdent(token.literal);
+          return token;
+        } else if (isDigit(this.character)) {
+          token.type = TokenType.INT;
+          token.literal = this.readNumber();
+          return token;
+        }
 
-    const type = COMMON_TYPES[this.character];
-
-    if (type) {
-      token.type = type;
-    } else {
-      if (isLetter(this.character)) {
-        token.literal = this.readIdentifier();
-        token.type = Token.lookupIdent(token.literal);
-        return token;
-      } else if (isDigit(this.character)) {
-        token.type = TokenType.INT;
-        token.literal = this.readNumber();
-        return token;
-      }
-
-      token = Token.new(TokenType.ILLEGAL, this.character);
+        token = Token.new(TokenType.ILLEGAL, this.character);
     }
 
     this.readCharacter();
@@ -109,6 +147,14 @@ export class Lexer {
     || this.character === '\r') {
       this.readCharacter();
     }
+  }
+
+  private peekChar (): string {
+    if (this.readPosition >= this.input.length) {
+      return '';
+    }
+
+    return this.input[this.readPosition];
   }
 
 }

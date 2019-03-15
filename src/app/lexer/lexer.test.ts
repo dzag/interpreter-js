@@ -20,6 +20,9 @@ test('next token', () => {
       return false;
     }
     
+    10 == 10;
+    10 != 9;
+    
     `;
 
   const lexer = Lexer.fromInput(input);
@@ -96,6 +99,16 @@ test('next token', () => {
     [TokenType.FALSE, 'false'],
     [TokenType.SEMICOLON, ';'],
     [TokenType.RBRACE, '}'],
+
+    [TokenType.INT, '10'],
+    [TokenType.EQ, '=='],
+    [TokenType.INT, '10'],
+    [TokenType.SEMICOLON, ';'],
+
+    [TokenType.INT, '10'],
+    [TokenType.NOT_EQ, '!='],
+    [TokenType.INT, '9'],
+    [TokenType.SEMICOLON, ';'],
 
   ];
 
