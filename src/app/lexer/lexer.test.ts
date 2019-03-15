@@ -110,6 +110,8 @@ test('next token', () => {
     [TokenType.INT, '9'],
     [TokenType.SEMICOLON, ';'],
 
+    [TokenType.EOF, '__EOF__'],
+
   ];
 
   tests.forEach(([expectedType, expectedLiteral]) => {

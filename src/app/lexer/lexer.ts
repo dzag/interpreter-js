@@ -89,6 +89,9 @@ export class Lexer {
       case '}':
         token = Token.new(TokenType.RBRACE, this.character);
         break;
+      case '__EOF__':
+        token = Token.new(TokenType.EOF, this.character);
+        break;
       default:
         if (isLetter(this.character)) {
           token.literal = this.readIdentifier();
@@ -110,7 +113,7 @@ export class Lexer {
 
   private readCharacter () {
     if (this.readPosition >= this.input.length) {
-      this.character = '';
+      this.character = '__EOF__';
     } else {
       this.character = this.input[this.readPosition];
     }
