@@ -1,6 +1,14 @@
 import { Token } from '../token/token';
 import { TokenType } from '../token/token-type';
 
+const isLetter = (character: string): boolean => {
+  return 'a' <= character && character <= 'z' || 'A' <= character && character <= 'Z' || character === '_';
+};
+
+const isDigit = (character: string): boolean => {
+  return '0' <= character && character <= '9';
+};
+
 export class Lexer {
 
   input: string;
@@ -17,6 +25,8 @@ export class Lexer {
   }
 
   nextToken (): Token {
+    this.skipWhiteSpace();
+
     let token = new Token();
     token.literal = this.character;
 
@@ -45,6 +55,18 @@ export class Lexer {
       case '}':
         token.type = TokenType.RBRACE;
         break;
+      default:
+        if (isLetter(this.character)) {
+          token.literal = this.readIdentifier();
+          token.type = Token.lookupIdent(token.literal);
+          return token;
+        } else if (isDigit(this.character)) {
+          token.type = TokenType.INT;
+          token.literal = this.readNumber();
+          return token;
+        }
+
+        token = Token.new(TokenType.ILLEGAL, this.character);
     }
 
     this.readCharacter();
@@ -54,7 +76,7 @@ export class Lexer {
 
   private readCharacter () {
     if (this.readPosition >= this.input.length) {
-      this.character = '0';
+      this.character = '';
     } else {
       this.character = this.input[this.readPosition];
     }
@@ -64,6 +86,33 @@ export class Lexer {
     this.readPosition += 1;
   }
 
+  private readIdentifier () {
+    const position = this.position;
 
+    while (isLetter(this.character)) {
+      this.readCharacter();
+    }
+
+    return this.input.substring(position, this.position);
+  }
+
+  private readNumber () {
+    const position = this.position;
+
+    while (isDigit(this.character)) {
+      this.readCharacter();
+    }
+
+    return this.input.substring(position, this.position);
+  }
+
+  private skipWhiteSpace () {
+    while (this.character === ' '
+    || this.character === '\t'
+    || this.character === '\n'
+    || this.character === '\r') {
+      this.readCharacter();
+    }
+  }
 
 }

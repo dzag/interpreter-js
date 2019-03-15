@@ -22,3 +22,8 @@ export enum TokenType {
   FUNCTION = 'FUNCTION',
   LET = 'LET',
 }
+
+export const KEYWORDS: { [p: string]: TokenType } = {
+  'fn': TokenType.FUNCTION,
+  'let': TokenType.LET,
+};
