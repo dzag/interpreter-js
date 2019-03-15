@@ -5,11 +5,11 @@ export interface Node {
 }
 
 export interface Statement extends Node {
-  statementNode (): any;
+  __statementNode (): any;
 }
 
 export interface Expression extends Node {
-  expressionNode (): any;
+  __expressionNode (): any;
 }
 
 export class LetStatement implements Statement {
@@ -17,7 +17,15 @@ export class LetStatement implements Statement {
   name: Identifier;
   value: Expression;
 
-  statementNode (): any {}
+  static new (token: Token) {
+    const statement = new LetStatement();
+
+    statement.token = token;
+
+    return statement;
+  }
+
+  __statementNode (): any {}
 
   tokenLiteral (): string { return this.token.literal; }
 
@@ -27,7 +35,16 @@ export class Identifier implements Expression {
   token: Token;
   value: string;
 
-  expressionNode (): any { }
+  static new (token: Token, value: string) {
+    const ident = new Identifier();
+
+    ident.token = token;
+    ident.value = value;
+
+    return ident;
+  }
+
+  __expressionNode (): any { }
 
   tokenLiteral (): string { return this.token.literal; }
 }
