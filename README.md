@@ -1,6 +1,6 @@
 # Interpreter in JS
 
-This following the book at https://interpreterbook.com/ but using in TypeScript instead.
+This following the book at https://interpreterbook.com/ but using TypeScript instead.
 
 ## Tests
 ```
