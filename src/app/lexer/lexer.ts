@@ -45,10 +45,6 @@ export class Lexer {
       case '}':
         token.type = TokenType.RBRACE;
         break;
-      case '0':
-        token.literal = '';
-        token.type = TokenType.EOF;
-        break;
     }
 
     this.readCharacter();

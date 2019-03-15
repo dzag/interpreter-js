@@ -14,7 +14,6 @@ test('next token', () => {
     [TokenType.RBRACE, "}"],
     [TokenType.COMMA, ","],
     [TokenType.SEMICOLON, ";"],
-    [TokenType.EOF, ""],
   ];
 
   tests.forEach(([expectedType, expectedLiteral]) => {
