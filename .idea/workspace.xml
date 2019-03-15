@@ -4,9 +4,7 @@
     <list default="true" id="88b3e06c-d6bd-40ac-b8e7-78a1e582c519" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/lexer/lexer.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/lexer/lexer.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/lexer/lexer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/lexer/lexer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/token/token-type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/token/token-type.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/token/token.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/token/token.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -24,15 +22,13 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/app/lexer/lexer.ts">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="302">
-                  <caret line="32" column="29" lean-forward="true" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="29" />
+                <state relative-caret-position="-242">
+                  <caret line="11" column="49" selection-start-line="11" selection-start-column="49" selection-end-line="11" selection-end-column="49" />
                   <folding>
                     <element signature="e#0#39#0" expanded="true" />
+                    <element signature="e#375#681#0" />
                     <element signature="n#!!block;n#fromInput#0;n#Lexer#0" expanded="true" />
-                    <element signature="e#681#744#0" />
-                    <element signature="e#751#813#0" />
-                    <element signature="e#820#881#0" />
-                    <element signature="e#888#951#0" />
+                    <element signature="n#!!block;n#nextToken#0;n#Lexer#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -50,21 +46,51 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/app/lexer/lexer.test.ts">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="138">
-                  <caret line="28" column="30" lean-forward="true" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
-                  <folding>
-                    <element signature="e#0#32#0" expanded="true" />
-                    <element signature="e#1981#2116#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
+        <splitter split-orientation="vertical" split-proportion="0.5">
+          <split-first>
+            <leaf>
+              <file pinned="false" current-in-tab="true">
+                <entry file="file://$PROJECT_DIR$/src/app/lexer/lexer.test.ts">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="161">
+                      <caret line="21" column="4" lean-forward="true" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+                      <folding>
+                        <element signature="e#0#32#0" expanded="true" />
+                        <element signature="e#1981#2116#0" expanded="true" />
+                      </folding>
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/src/app/token/token-type.ts">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="460">
+                      <caret line="41" column="27" lean-forward="true" selection-start-line="41" selection-start-column="27" selection-end-line="41" selection-end-column="27" />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+            </leaf>
+          </split-first>
+          <split-second>
+            <leaf>
+              <file pinned="false" current-in-tab="true">
+                <entry file="file://$PROJECT_DIR$/src/app/lexer/lexer.test.ts">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="172">
+                      <caret line="95" column="31" lean-forward="true" selection-start-line="95" selection-start-column="31" selection-end-line="95" selection-end-column="31" />
+                      <folding>
+                        <element signature="e#0#32#0" expanded="true" />
+                        <element signature="e#1464#1599#0" expanded="true" />
+                      </folding>
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+            </leaf>
+          </split-second>
+        </splitter>
       </split-second>
     </splitter>
   </component>
@@ -91,9 +117,9 @@
         <option value="$PROJECT_DIR$/src/app/token/TokenTypes.ts" />
         <option value="$PROJECT_DIR$/src/app/token/token-types.ts" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/src/app/token/token-type.ts" />
         <option value="$PROJECT_DIR$/src/app/token/token.ts" />
         <option value="$PROJECT_DIR$/src/app/lexer/lexer.ts" />
+        <option value="$PROJECT_DIR$/src/app/token/token-type.ts" />
         <option value="$PROJECT_DIR$/src/app/lexer/lexer.test.ts" />
       </list>
     </option>
@@ -214,7 +240,7 @@
       <option name="presentableId" value="Default" />
       <updated>1551738531063</updated>
       <workItem from="1551738534573" duration="4018000" />
-      <workItem from="1552614998917" duration="2062000" />
+      <workItem from="1552614998917" duration="3770000" />
     </task>
     <task id="LOCAL-00001" summary="Remove EOF case">
       <created>1552615546507</created>
@@ -223,37 +249,57 @@
       <option name="project" value="LOCAL" />
       <updated>1552615546507</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Read keywords and numbers">
+      <created>1552617131139</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1552617131139</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Support more operators">
+      <created>1552617891306</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1552617891306</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="add_1_+_2_to_equal_3 - 2019.03.05 at 05h 38m 59s.xml">
-      <configuration name="add 1 + 2 to equal 3" configurationId="JavaScriptTestRunnerJest" />
-    </history-entry>
-    <history-entry file="All_Tests - 2019.03.15 at 09h 27m 50s.xml">
+    <history-entry file="All_Tests - 2019.03.15 at 09h 40m 50s.xml">
       <configuration name="All Tests" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="All_Tests - 2019.03.15 at 09h 28m 17s.xml">
+    <history-entry file="All_Tests - 2019.03.15 at 09h 43m 53s.xml">
       <configuration name="All Tests" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="All_Tests - 2019.03.15 at 09h 29m 40s.xml">
+    <history-entry file="All_Tests - 2019.03.15 at 09h 44m 08s.xml">
       <configuration name="All Tests" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="All_Tests - 2019.03.15 at 09h 30m 09s.xml">
+    <history-entry file="All_Tests - 2019.03.15 at 09h 44m 14s.xml">
       <configuration name="All Tests" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="All_Tests - 2019.03.15 at 09h 30m 36s.xml">
+    <history-entry file="All_Tests - 2019.03.15 at 09h 45m 26s.xml">
       <configuration name="All Tests" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="All_Tests - 2019.03.15 at 09h 30m 48s.xml">
+    <history-entry file="All_Tests - 2019.03.15 at 09h 54m 45s.xml">
       <configuration name="All Tests" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="All_Tests - 2019.03.15 at 09h 31m 05s.xml">
+    <history-entry file="All_Tests - 2019.03.15 at 09h 54m 47s.xml">
+      <configuration name="All Tests" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="All_Tests - 2019.03.15 at 09h 59m 17s.xml">
+      <configuration name="All Tests" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="All_Tests - 2019.03.15 at 09h 59m 20s.xml">
+      <configuration name="All Tests" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="All_Tests - 2019.03.15 at 09h 59m 33s.xml">
       <configuration name="All Tests" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6080000" />
+    <option name="totallyTimeSpent" value="7788000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -292,7 +338,9 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="Remove EOF case" />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove EOF case" />
+    <MESSAGE value="Read keywords and numbers" />
+    <MESSAGE value="Support more operators" />
+    <option name="LAST_COMMIT_MESSAGE" value="Support more operators" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="breakpointCondition">
@@ -346,13 +394,6 @@
     <entry file="file://$PROJECT_DIR$/src/index.ts">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/token/token-type.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="9" column="2" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/token/token.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="253">
@@ -362,26 +403,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/lexer/lexer.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="32" column="29" lean-forward="true" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="29" />
+        <state relative-caret-position="-242">
+          <caret line="11" column="49" selection-start-line="11" selection-start-column="49" selection-end-line="11" selection-end-column="49" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#375#681#0" />
             <element signature="n#!!block;n#fromInput#0;n#Lexer#0" expanded="true" />
-            <element signature="e#681#744#0" />
-            <element signature="e#751#813#0" />
-            <element signature="e#820#881#0" />
-            <element signature="e#888#951#0" />
+            <element signature="n#!!block;n#nextToken#0;n#Lexer#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/token/token-type.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="41" column="27" lean-forward="true" selection-start-line="41" selection-start-column="27" selection-end-line="41" selection-end-column="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/lexer/lexer.test.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="28" column="30" lean-forward="true" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
+        <state relative-caret-position="172">
+          <caret line="95" column="31" lean-forward="true" selection-start-line="95" selection-start-column="31" selection-end-line="95" selection-end-column="31" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
-            <element signature="e#1981#2116#0" expanded="true" />
+            <element signature="e#1464#1599#0" expanded="true" />
           </folding>
         </state>
       </provider>

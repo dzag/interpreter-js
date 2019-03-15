@@ -28,9 +28,19 @@ export enum TokenType {
   // Keywords
   FUNCTION = 'FUNCTION',
   LET = 'LET',
+  TRUE = 'TRUE',
+  FALSE = 'FALSE',
+  IF = 'IF',
+  ELSE = 'ELSE',
+  RETURN = 'RETURN',
 }
 
 export const KEYWORDS: { [p: string]: TokenType } = {
   'fn': TokenType.FUNCTION,
   'let': TokenType.LET,
+  'true': TokenType.TRUE,
+  'false': TokenType.FALSE,
+  'if': TokenType.IF,
+  'else': TokenType.ELSE,
+  'return': TokenType.RETURN,
 };
