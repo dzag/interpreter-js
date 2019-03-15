@@ -9,6 +9,23 @@ const isDigit = (character: string): boolean => {
   return '0' <= character && character <= '9';
 };
 
+const COMMON_TYPES: { [p: string]: TokenType } = {
+  '=': TokenType.ASSIGN,
+  '+': TokenType.PLUS,
+  '-': TokenType.MINUS,
+  '!': TokenType.BANG,
+  '*': TokenType.ASTERISK,
+  '/': TokenType.SLASH,
+  '<': TokenType.LT,
+  '>': TokenType.GT,
+  ',': TokenType.COMMA,
+  ';': TokenType.SEMICOLON,
+  '(': TokenType.LPAREN,
+  ')': TokenType.RPAREN,
+  '{': TokenType.LBRACE,
+  '}': TokenType.RBRACE,
+};
+
 export class Lexer {
 
   input: string;
@@ -30,43 +47,22 @@ export class Lexer {
     let token = new Token();
     token.literal = this.character;
 
-    switch (this.character) {
-      case '=':
-        token.type = TokenType.ASSIGN;
-        break;
-      case ';':
-        token.type = TokenType.SEMICOLON;
-        break;
-      case '(':
-        token.type = TokenType.LPAREN;
-        break;
-      case ')':
-        token.type = TokenType.RPAREN;
-        break;
-      case ',':
-        token.type = TokenType.COMMA;
-        break;
-      case '+':
-        token.type = TokenType.PLUS;
-        break;
-      case '{':
-        token.type = TokenType.LBRACE;
-        break;
-      case '}':
-        token.type = TokenType.RBRACE;
-        break;
-      default:
-        if (isLetter(this.character)) {
-          token.literal = this.readIdentifier();
-          token.type = Token.lookupIdent(token.literal);
-          return token;
-        } else if (isDigit(this.character)) {
-          token.type = TokenType.INT;
-          token.literal = this.readNumber();
-          return token;
-        }
+    const type = COMMON_TYPES[this.character];
 
-        token = Token.new(TokenType.ILLEGAL, this.character);
+    if (type) {
+      token.type = type;
+    } else {
+      if (isLetter(this.character)) {
+        token.literal = this.readIdentifier();
+        token.type = Token.lookupIdent(token.literal);
+        return token;
+      } else if (isDigit(this.character)) {
+        token.type = TokenType.INT;
+        token.literal = this.readNumber();
+        return token;
+      }
+
+      token = Token.new(TokenType.ILLEGAL, this.character);
     }
 
     this.readCharacter();
