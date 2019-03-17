@@ -10,6 +10,9 @@ describe('parse program', () => {
   `;
   const lexer = Lexer.fromInput(input);
   const parser = Parser.new(lexer);
+  test('parse without no errors', (done) => {
+    checkParserErrors(parser, done);
+  });
 
   const program = parser.parseProgram();
 
@@ -29,9 +32,9 @@ describe('parse program', () => {
     'x', 'y', 'foobar'
   ];
 
-  tests.forEach((identifer, i) => {
+  tests.forEach((identifier, i) => {
     const stmt = program.statements[i];
-    testLetStatement(stmt, identifer);
+    testLetStatement(stmt, identifier);
   });
 
 });
@@ -55,4 +58,17 @@ function testLetStatement (statement: Statement, name: string) {
     expect(letStatement.name.tokenLiteral()).toBe(name);
   });
 
+}
+
+
+function checkParserErrors (parser: Parser, done: any) {
+  const errs = parser.errors;
+
+  if (errs.length === 0) {
+    done();
+    return;
+  }
+
+  errs.forEach(err => console.error(err));
+  done.fail(`parser has ${errs.length} errors`);
 }

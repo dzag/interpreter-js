@@ -10,12 +10,15 @@ export class Parser {
   currentToken: Token;
   peekToken: Token;
 
+  errors: string[] = [];
+
   private constructor () {}
 
   static new (lexer: Lexer) {
     const parser = new Parser();
     parser.lexer = lexer;
 
+    // Advancing 2 times, so the currentToken will be at the first character
     parser.nextToken();
     parser.nextToken();
 
@@ -76,12 +79,16 @@ export class Parser {
     return statement;
   }
 
+  /**
+   * Assertion function, checking the type before advancing
+   */
   private expectPeek (tokenType: TokenType): boolean {
     if (this.peekTokenIs(tokenType)) {
       this.nextToken();
       return true;
     }
 
+    this.peekErrors(tokenType);
     return false;
   }
 
@@ -91,6 +98,12 @@ export class Parser {
 
   private peekTokenIs (tokenType: TokenType): boolean {
     return this.peekToken.type === tokenType;
+  }
+
+  private peekErrors (tokenType: TokenType) {
+    this.errors.push(
+      `Expected next token to be '${tokenType}', got '${this.peekToken.type}' instead,`
+    )
   }
 
 }
