@@ -11,10 +11,10 @@ export class LetStatement implements Statement {
   name: Identifier;
   value: Expression;
 
-  static new (token: Token) {
+  static new (props : { token?: Token, name?: Identifier, value?: Expression } = {}) {
     const statement = new LetStatement();
 
-    statement.token = token;
+    Object.assign(statement, props);
 
     return statement;
   }
@@ -22,6 +22,20 @@ export class LetStatement implements Statement {
   __statementNode (): any {}
 
   tokenLiteral (): string { return this.token.literal; }
+
+  string (): string {
+    let result =
+      `${this.tokenLiteral()} ${this.name.string()}`
+      + ` = `;
+
+    if (this.value) {
+      result += `${this.value.string()}`;
+    }
+
+    result += ';';
+
+    return result;
+  }
 
 }
 
@@ -43,4 +57,35 @@ export class ReturnStatement implements Statement {
   tokenLiteral (): string {
     return this.token.literal;
   }
+
+  string (): string {
+    let result = `${this.tokenLiteral()} `;
+
+    if (this.returnValue) {
+      result += `${this.returnValue.string()}`;
+    }
+
+    result += ';';
+
+    return result;
+  }
+
+}
+
+export class ExpressionStatement implements Statement {
+  token: Token;
+  expression: Expression;
+
+  __statementNode (): any {}
+
+  tokenLiteral (): string { return this.token.literal; }
+
+  string (): string {
+    if (this.expression) {
+      return this.expression.string();
+    }
+
+    return '';
+  }
+
 }

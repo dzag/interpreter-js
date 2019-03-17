@@ -21,4 +21,9 @@ export class Identifier implements Expression {
   __expressionNode (): any { }
 
   tokenLiteral (): string { return this.token.literal; }
+
+  string (): string {
+    return this.value;
+  }
+
 }

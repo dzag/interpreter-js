@@ -26,8 +26,9 @@ export class Parser {
   }
 
   parseProgram (): Program {
-    const program = new Program();
-    program.statements = [];
+    const program = Program.new({
+      statements: [],
+    });
 
     while (this.currentToken.type !== TokenType.EOF) {
       const statement = this.parseStatement();
@@ -59,7 +60,9 @@ export class Parser {
   }
 
   private parseLetStatement (): LetStatement | null {
-    const statement = LetStatement.new(this.currentToken);
+    const statement = LetStatement.new({
+      token: this.currentToken
+    });
 
     if (!this.expectPeek(TokenType.IDENT)) {
       return null;
@@ -117,6 +120,6 @@ export class Parser {
   private peekErrors (tokenType: TokenType) {
     this.errors.push(
       `Expected next token to be '${tokenType}', got '${this.peekToken.type}' instead,`
-    )
+    );
   }
 }
