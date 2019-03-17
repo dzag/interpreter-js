@@ -24,3 +24,23 @@ export class LetStatement implements Statement {
   tokenLiteral (): string { return this.token.literal; }
 
 }
+
+export class ReturnStatement implements Statement {
+  token: Token;
+  returnValue: Expression;
+
+  private constructor () {}
+
+  static new (token: Token) {
+    const statement = new ReturnStatement();
+    statement.token = token;
+
+    return statement;
+  }
+
+  __statementNode (): any {}
+
+  tokenLiteral (): string {
+    return this.token.literal;
+  }
+}

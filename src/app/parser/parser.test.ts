@@ -1,8 +1,8 @@
 import { Lexer } from '../lexer/lexer';
 import { Parser } from './parser';
-import { Statement, LetStatement } from '../ast/';
+import { Statement, LetStatement, ReturnStatement } from '../ast/';
 
-describe('parse program', () => {
+describe('parse let statements', () => {
   const input = `
     let x = 5;
     let y = 10;
@@ -39,6 +39,45 @@ describe('parse program', () => {
 
 });
 
+describe('parse return statements', () => {
+  const input = `
+    return 5;
+    return 10;
+    return 838383;
+  `;
+
+  const lexer = Lexer.fromInput(input);
+  const parser = Parser.new(lexer);
+  test('parse without no errors', (done) => {
+    checkParserErrors(parser, done);
+  });
+
+  const program = parser.parseProgram();
+
+  test('program is not null', () => {
+    expect(program).not.toBe(null);
+  });
+
+  if (!program) {
+    return;
+  }
+
+  test('program statements can contain only 3 statements', () => {
+    expect(program.statements.length).toBe(3);
+  });
+
+  program.statements.forEach(returnStatement => {
+    test('statement is return statement', () => {
+      expect(returnStatement).toBeInstanceOf(ReturnStatement);
+    });
+
+    test(`returnStatement.tokenLiteral() is 'return'`, () => {
+      expect(returnStatement.tokenLiteral()).toBe('return');
+    });
+  });
+
+});
+
 function testLetStatement (statement: Statement, name: string) {
 
   test('statement.tokenLiteral is `let`', () => {
@@ -59,7 +98,6 @@ function testLetStatement (statement: Statement, name: string) {
   });
 
 }
-
 
 function checkParserErrors (parser: Parser, done: any) {
   const errs = parser.errors;
