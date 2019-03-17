@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="88b3e06c-d6bd-40ac-b8e7-78a1e582c519" name="Default Changelist" comment="">
+    <list default="true" id="88b3e06c-d6bd-40ac-b8e7-78a1e582c519" name="Default Changelist" comment="Print errors message when failed to parse to code.">
+      <change afterPath="$PROJECT_DIR$/src/app/ast/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/ast/program.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/ast/types/expression.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/ast/types/node.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/ast/types/statement.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ast/ast.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/parser/parser.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/parser/parser.test.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/parser/parser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/parser/parser.ts" afterDir="false" />
     </list>
@@ -16,77 +22,32 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/app/ast/ast.ts">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="286">
-                  <caret line="19" column="9" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
-                  <folding>
-                    <element signature="n#!!block;n#Node#0" />
-                    <element signature="n#!!block;n#Statement#0" />
-                    <element signature="n#!!block;n#Expression#0" />
-                    <element signature="n#!!block;n#new#0;n#LetStatement#0" expanded="true" />
-                    <element signature="n#Identifier#0" />
-                    <element signature="n#!!block;n#new#0;n#Identifier#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/app/parser/parser.ts">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="278">
-                  <caret line="105" column="5" lean-forward="true" selection-start-line="105" selection-start-column="5" selection-end-line="105" selection-end-column="5" />
-                  <folding>
-                    <element signature="e#0#39#0" expanded="true" />
-                    <element signature="n#!!block;n#new#0;n#Parser#0" expanded="true" />
-                    <element signature="n#!!block;n#parseProgram#0;n#Parser#0" expanded="true" />
-                    <element signature="n#!!block;n#nextToken#0;n#Parser#0" expanded="true" />
-                    <element signature="n#!!block;n#parseStatement#0;n#Parser#0" expanded="true" />
-                    <element signature="n#!!block;n#parseLetStatement#0;n#Parser#0" expanded="true" />
-                    <element signature="n#!!doc;n#expectPeek#0;n#Parser#0" expanded="true" />
-                    <element signature="n#!!block;n#expectPeek#0;n#Parser#0" expanded="true" />
-                    <element signature="n#!!block;n#peekTokenIs#0;n#Parser#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/app/parser/parser.test.ts">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="138">
-                  <caret line="6" column="14" lean-forward="true" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
-                  <folding>
-                    <element signature="e#0#39#0" expanded="true" />
-                    <element signature="e#363#405#0" expanded="true" />
-                    <element signature="e#543#595#0" expanded="true" />
-                    <element signature="e#680#764#0" expanded="true" />
-                    <element signature="e#887#942#0" expanded="true" />
-                    <element signature="e#990#1047#0" expanded="true" />
-                    <element signature="e#1206#1259#0" expanded="true" />
-                    <element signature="n#!!block;n#checkParserErrors#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/app/ast/program.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="253">
+              <caret line="11" column="14" lean-forward="true" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/ast/index.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="69">
+              <caret line="3" column="26" lean-forward="true" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
       <find>EOF</find>
       <find>'0'</find>
+      <find>LetStatement</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -113,13 +74,17 @@
         <option value="$PROJECT_DIR$/tsconfig.json" />
         <option value="$PROJECT_DIR$/src/app/lexer/lexer.ts" />
         <option value="$PROJECT_DIR$/src/app/lexer/lexer.test.ts" />
-        <option value="$PROJECT_DIR$/src/app/ast/ast.ts" />
         <option value="$PROJECT_DIR$/setup-tests.ts" />
         <option value="$PROJECT_DIR$/setup-tests.js" />
         <option value="$PROJECT_DIR$/setup.ts" />
         <option value="$PROJECT_DIR$/jest.config.js" />
+        <option value="$PROJECT_DIR$/src/app/ast/node.ts" />
+        <option value="$PROJECT_DIR$/src/app/ast/index.ts" />
         <option value="$PROJECT_DIR$/src/app/parser/parser.ts" />
+        <option value="$PROJECT_DIR$/src/app/ast/expression.ts" />
         <option value="$PROJECT_DIR$/src/app/parser/parser.test.ts" />
+        <option value="$PROJECT_DIR$/src/app/ast/statement.ts" />
+        <option value="$PROJECT_DIR$/src/app/ast/ast.ts" />
       </list>
     </option>
   </component>
@@ -159,6 +124,31 @@
               <item name="interpreter-js" type="b2602c69:ProjectViewProjectNode" />
               <item name="interpreter-js" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="interpreter-js" type="b2602c69:ProjectViewProjectNode" />
+              <item name="interpreter-js" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="interpreter-js" type="b2602c69:ProjectViewProjectNode" />
+              <item name="interpreter-js" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="interpreter-js" type="b2602c69:ProjectViewProjectNode" />
+              <item name="interpreter-js" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="ast" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="interpreter-js" type="b2602c69:ProjectViewProjectNode" />
+              <item name="interpreter-js" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="parser" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -180,6 +170,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Projects\personal\interpreter-js\src\app\ast\types" />
       <recent name="C:\Projects\interpreter-js\src\app" />
     </key>
   </component>
@@ -300,55 +291,62 @@
       <option name="project" value="LOCAL" />
       <updated>1552807291499</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Print errors message when failed to parse to code.">
+      <created>1552807622352</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1552807622352</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="parse_program - 2019.03.17 at 14h 19m 53s.xml">
+    <history-entry file="parse_program - 2019.03.17 at 14h 37m 11s.xml">
       <configuration name="parse program" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="parse_program - 2019.03.17 at 14h 20m 08s.xml">
+    <history-entry file="parse_program - 2019.03.17 at 14h 37m 22s.xml">
       <configuration name="parse program" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="All_Tests - 2019.03.17 at 14h 20m 33s.xml">
-      <configuration name="All Tests" configurationId="JavaScriptTestRunnerJest" />
-    </history-entry>
-    <history-entry file="parse_program - 2019.03.17 at 14h 22m 41s.xml">
+    <history-entry file="parse_program - 2019.03.17 at 14h 37m 47s.xml">
       <configuration name="parse program" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="parse_program - 2019.03.17 at 14h 23m 55s.xml">
+    <history-entry file="parse_program - 2019.03.17 at 14h 39m 25s.xml">
       <configuration name="parse program" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="parse_program - 2019.03.17 at 14h 24m 16s.xml">
+    <history-entry file="parse_program - 2019.03.17 at 14h 39m 48s.xml">
       <configuration name="parse program" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="All_Tests - 2019.03.17 at 14h 24m 56s.xml">
-      <configuration name="All Tests" configurationId="JavaScriptTestRunnerJest" />
-    </history-entry>
-    <history-entry file="All_Tests - 2019.03.17 at 14h 25m 17s.xml">
-      <configuration name="All Tests" configurationId="JavaScriptTestRunnerJest" />
-    </history-entry>
-    <history-entry file="parse_program - 2019.03.17 at 14h 25m 48s.xml">
+    <history-entry file="parse_program - 2019.03.17 at 14h 39m 51s.xml">
       <configuration name="parse program" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
-    <history-entry file="parse_program - 2019.03.17 at 14h 26m 10s.xml">
+    <history-entry file="parse_program - 2019.03.17 at 14h 40m 19s.xml">
+      <configuration name="parse program" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="parse_program - 2019.03.17 at 14h 40m 20s.xml">
+      <configuration name="parse program" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="parse_program - 2019.03.17 at 14h 40m 48s.xml">
+      <configuration name="parse program" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="parse_program - 2019.03.17 at 14h 40m 51s.xml">
       <configuration name="parse program" configurationId="JavaScriptTestRunnerJest" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26235000" />
+    <option name="totallyTimeSpent" value="27119000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19178082" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19178082" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.38469946" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.38469946" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -392,7 +390,8 @@
     <MESSAGE value="Add README.md." />
     <MESSAGE value="Fix typos." />
     <MESSAGE value="Add jasmine failed fast &#10;&#10;References:&#10;- https://www.npmjs.com/package/jasmine-fail-fast&#10;- https://github.com/facebook/jest/issues/2867#issuecomment-370624846" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add jasmine failed fast &#10;&#10;References:&#10;- https://www.npmjs.com/package/jasmine-fail-fast&#10;- https://github.com/facebook/jest/issues/2867#issuecomment-370624846" />
+    <MESSAGE value="Print errors message when failed to parse to code." />
+    <option name="LAST_COMMIT_MESSAGE" value="Print errors message when failed to parse to code." />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="breakpointCondition">
@@ -513,21 +512,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/ast/ast.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="19" column="9" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
-          <folding>
-            <element signature="n#!!block;n#Node#0" />
-            <element signature="n#!!block;n#Statement#0" />
-            <element signature="n#!!block;n#Expression#0" />
-            <element signature="n#!!block;n#new#0;n#LetStatement#0" expanded="true" />
-            <element signature="n#Identifier#0" />
-            <element signature="n#!!block;n#new#0;n#Identifier#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/typescript/lib/lib.es5.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
@@ -583,10 +567,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/ast/types/node.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="1" lean-forward="true" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/parser/parser.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="105" column="5" lean-forward="true" selection-start-line="105" selection-start-column="5" selection-end-line="105" selection-end-column="5" />
+        <state relative-caret-position="69">
+          <caret line="3" column="70" lean-forward="true" selection-start-line="3" selection-start-column="70" selection-end-line="3" selection-end-column="70" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
             <element signature="n#!!block;n#new#0;n#Parser#0" expanded="true" />
@@ -597,16 +588,28 @@
             <element signature="n#!!doc;n#expectPeek#0;n#Parser#0" expanded="true" />
             <element signature="n#!!block;n#expectPeek#0;n#Parser#0" expanded="true" />
             <element signature="n#!!block;n#peekTokenIs#0;n#Parser#0" expanded="true" />
+            <element signature="n#!!block;n#peekErrors#0;n#Parser#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/ast/types/expression.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="529">
+          <caret line="23" column="1" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+            <element signature="n#!!block;n#new#0;n#Identifier#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/parser/parser.test.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="6" column="14" lean-forward="true" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
+        <state relative-caret-position="23">
+          <caret line="1" column="34" selection-start-line="1" selection-start-column="34" selection-end-line="1" selection-end-column="34" />
           <folding>
-            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#166#804#0" expanded="true" />
             <element signature="e#363#405#0" expanded="true" />
             <element signature="e#543#595#0" expanded="true" />
             <element signature="e#680#764#0" expanded="true" />
@@ -615,6 +618,31 @@
             <element signature="e#1206#1259#0" expanded="true" />
             <element signature="n#!!block;n#checkParserErrors#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/ast/types/statement.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="10" column="19" lean-forward="true" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+            <element signature="n#!!block;n#new#0;n#LetStatement#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/ast/index.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="3" column="26" lean-forward="true" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/ast/program.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="11" column="14" lean-forward="true" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
         </state>
       </provider>
     </entry>

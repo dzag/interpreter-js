@@ -1,7 +1,7 @@
 import { Lexer } from '../lexer/lexer';
 import { Token } from '../token/token';
-import { Identifier, LetStatement, Program, Statement } from '../ast/ast';
 import { TokenType } from '../token/token-type';
+import { Identifier, Program, LetStatement, Statement } from '../ast';
 
 export class Parser {
 

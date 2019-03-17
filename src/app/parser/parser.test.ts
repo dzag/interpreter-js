@@ -1,6 +1,6 @@
 import { Lexer } from '../lexer/lexer';
 import { Parser } from './parser';
-import { LetStatement, Statement } from '../ast/ast';
+import { Statement, LetStatement } from '../ast/';
 
 describe('parse program', () => {
   const input = `
