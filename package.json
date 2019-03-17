@@ -12,10 +12,12 @@
   "license": "ISC",
   "devDependencies": {
     "@types/jest": "^24.0.9",
+    "jasmine-fail-fast": "^2.0.0",
     "jest": "^24.1.0",
     "ts-jest": "^24.0.0",
     "ts-node": "^8.0.2",
     "ts-node-dev": "^1.0.0-pre.32",
+    "tslib": "^1.9.3",
     "typescript": "^3.3.3333"
   }
 }
