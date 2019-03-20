@@ -76,6 +76,13 @@ export class ExpressionStatement implements Statement {
   token: Token;
   expression: Expression;
 
+  static new (opts: { token?: Token, expression?: Expression }) {
+    const statement = new ExpressionStatement();
+    statement.token = opts.token as any;
+    statement.expression = opts.expression as any;
+    return statement;
+  }
+
   __statementNode (): any {}
 
   tokenLiteral (): string { return this.token.literal; }
@@ -87,5 +94,4 @@ export class ExpressionStatement implements Statement {
 
     return '';
   }
-
 }

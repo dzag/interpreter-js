@@ -1,16 +1,39 @@
 import { Lexer } from '../lexer/lexer';
 import { Token } from '../token/token';
 import { TokenType } from '../token/token-type';
-import { Identifier, LetStatement, Program, ReturnStatement, Statement } from '../ast';
+import {
+  Expression,
+  ExpressionStatement,
+  Identifier,
+  InfixParseFn,
+  LetStatement,
+  PrefixParseFn,
+  Program,
+  ReturnStatement,
+  Statement
+} from '../ast';
+
+enum Precedence {
+  _,
+  LOWEST,
+  EQUALS, // ==
+  LESSGREATER, // > or <
+  SUM, // +
+  PRODUCT, // *
+  PREFIX, // -X or !X
+  CALL, // myFunction(x)
+}
 
 export class Parser {
 
   lexer: Lexer;
+  errors: string[] = [];
 
   currentToken: Token;
   peekToken: Token;
 
-  errors: string[] = [];
+  prefixParseFns: Map<TokenType, PrefixParseFn> = new Map();
+  infixParseFns: Map<TokenType, InfixParseFn> = new Map();
 
   private constructor () {}
 
@@ -21,6 +44,11 @@ export class Parser {
     // Advancing 2 times, so the currentToken will be at the first character
     parser.nextToken();
     parser.nextToken();
+
+    parser.registerPrefix(
+      TokenType.IDENT,
+      parser.parseIdentifier.bind(parser)
+    );
 
     return parser;
   }
@@ -55,7 +83,7 @@ export class Parser {
       case TokenType.RETURN:
         return this.parseReturnStatement();
       default:
-        return null;
+        return this.parseExpressionStatement();
     }
   }
 
@@ -96,6 +124,23 @@ export class Parser {
     return statement;
   }
 
+  private parseExpressionStatement (): ExpressionStatement | null {
+    const statement = ExpressionStatement.new({token: this.currentToken});
+
+    statement.expression = this.parseExpression(Precedence.LOWEST) as Expression;
+
+    if (this.peekTokenIs(TokenType.SEMICOLON)) {
+      this.nextToken();
+    }
+
+    return statement;
+  }
+
+  // Parse Functions
+  private parseIdentifier (): Identifier {
+    return Identifier.new(this.currentToken, this.currentToken.literal);
+  }
+
   /**
    * Assertion function, checking the type before advancing
    */
@@ -122,4 +167,23 @@ export class Parser {
       `Expected next token to be '${tokenType}', got '${this.peekToken.type}' instead,`
     );
   }
+
+  private registerPrefix (tokenType: TokenType, fn: PrefixParseFn) {
+    this.prefixParseFns.set(tokenType, fn);
+  }
+
+  private registerInfix (tokenType: TokenType, fn: InfixParseFn) {
+    this.infixParseFns.set(tokenType, fn);
+  }
+
+  private parseExpression (precedence: Precedence): Expression | null {
+    const lefExpressionFn = this.prefixParseFns.get(this.currentToken.type);
+
+    if (!lefExpressionFn) {
+      return null;
+    }
+
+    return lefExpressionFn();
+  }
+
 }
