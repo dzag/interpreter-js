@@ -52,3 +52,34 @@ export class IntegerLiteral implements Expression {
   }
 
 }
+
+export class PrefixExpression implements Expression {
+  token: Token;
+  operator: string;
+  right: Expression;
+
+  static new (opts: { token?: Token, operator?: string; right?: Expression }) {
+    const ident = new PrefixExpression();
+
+    ident.token = opts.token as any;
+    ident.operator = opts.operator as any;
+    ident.right = opts.right as any;
+
+    return ident;
+  }
+
+  __expressionNode (): any {
+  }
+
+  tokenLiteral (): string {
+    return "";
+  }
+
+  string (): string {
+    return '(' +
+      this.operator +
+      this.right.string() +
+    ')';
+  }
+
+}

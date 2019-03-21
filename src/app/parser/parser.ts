@@ -8,6 +8,7 @@ import {
   InfixParseFn,
   IntegerLiteral,
   LetStatement,
+  PrefixExpression,
   PrefixParseFn,
   Program,
   ReturnStatement,
@@ -54,6 +55,16 @@ export class Parser {
     parser.registerPrefix(
       TokenType.INT,
       parser.parseIntegerLiteral.bind(parser)
+    );
+
+    parser.registerPrefix(
+      TokenType.BANG,
+      parser.parsePrefixExpression.bind(parser)
+    );
+
+    parser.registerPrefix(
+      TokenType.MINUS,
+      parser.parsePrefixExpression.bind(parser)
     );
 
     return parser;
@@ -158,6 +169,19 @@ export class Parser {
     return IntegerLiteral.new(this.currentToken, tokenLiteral);
   }
 
+  private parsePrefixExpression(): PrefixExpression | null {
+    const expression = PrefixExpression.new({
+      token: this.currentToken,
+      operator: this.currentToken.literal
+    });
+
+    this.nextToken();
+
+    expression.right = this.parseExpression(Precedence.PREFIX) as any;
+
+    return expression;
+  }
+
   /**
    * Assertion function, checking the type before advancing
    */
@@ -197,10 +221,17 @@ export class Parser {
     const lefExpressionFn = this.prefixParseFns.get(this.currentToken.type);
 
     if (!lefExpressionFn) {
+      this.noPrefixParserFnError(this.currentToken.type);
       return null;
     }
 
     return lefExpressionFn();
+  }
+
+  private noPrefixParserFnError (tokenType: TokenType) {
+    this.errors.push(
+      `No prefix parse function for "${tokenType}" found`
+    )
   }
 
 }

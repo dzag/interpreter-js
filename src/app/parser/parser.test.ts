@@ -1,6 +1,15 @@
 import { Lexer } from '../lexer/lexer';
 import { Parser } from './parser';
-import { ExpressionStatement, Identifier, IntegerLiteral, LetStatement, ReturnStatement, Statement } from '../ast/';
+import {
+  Expression,
+  ExpressionStatement,
+  Identifier,
+  IntegerLiteral,
+  LetStatement,
+  PrefixExpression,
+  ReturnStatement,
+  Statement
+} from '../ast/';
 
 describe('parse let statements', () => {
   const input = `
@@ -126,7 +135,7 @@ describe('test integer expression', () => {
   });
 
   const identifier = statement.expression as IntegerLiteral;
-  test('expression should be an Identifier', () => {
+  test('expression should be an IntegerLiteral', () => {
     expect(identifier).toBeInstanceOf(IntegerLiteral);
   });
 
@@ -137,6 +146,44 @@ describe('test integer expression', () => {
   test('token literal should be "5"', () => {
     expect(identifier.tokenLiteral()).toBe('5');
   });
+});
+
+describe('test parsing prefix expression', () => {
+  const prefixTests = [
+    { input: '!5', operator: '!', integerValue: 5 },
+    { input: '-15', operator: '-', integerValue: 15 },
+  ];
+
+  for (const { input, operator, integerValue } of prefixTests) {
+    const lexer = Lexer.fromInput(input);
+    const parser = Parser.new(lexer);
+
+    test('parse without no errors', (done) => {
+      checkParserErrors(parser, done);
+    });
+
+    const program = parser.parseProgram();
+
+    test('program should have only 1 statement', () => {
+      expect(program.statements.length).toBe(1);
+    });
+
+    const statement = program.statements[0] as ExpressionStatement;
+    test('statement should be ExpressionStatement', () => {
+      expect(statement).toBeInstanceOf(ExpressionStatement);
+    });
+
+    const expression = statement.expression as PrefixExpression;
+    test('expression should be an PrefixExpression', () => {
+      expect(expression).toBeInstanceOf(PrefixExpression);
+    });
+
+    test(`expression operator should be ${operator}`, () => {
+      expect(expression.operator).toBe(operator);
+    });
+
+    testIntegerLiteral(expression.right, integerValue);
+  }
 });
 
 function testLetStatement (statement: Statement, name: string) {
@@ -158,6 +205,22 @@ function testLetStatement (statement: Statement, name: string) {
     expect(letStatement.name.tokenLiteral()).toBe(name);
   });
 
+}
+
+function testIntegerLiteral (exp: Expression, value: number) {
+  const integerLiteral = exp as IntegerLiteral;
+
+  test('expression should be IntegerLiteral', () => {
+    expect(integerLiteral).toBeInstanceOf(IntegerLiteral);
+  });
+
+  test(`expression value should be "${value}"`, () => {
+    expect(integerLiteral.value).toBe(value);
+  });
+
+  test(`expression tokenLiteral() should be "${integerLiteral.value}"`, () => {
+    expect(integerLiteral.tokenLiteral()).toBe(`${value}`);
+  });
 }
 
 function checkParserErrors (parser: Parser, done: any) {
