@@ -6,6 +6,7 @@ import {
   ExpressionStatement,
   Identifier,
   InfixParseFn,
+  IntegerLiteral,
   LetStatement,
   PrefixParseFn,
   Program,
@@ -48,6 +49,11 @@ export class Parser {
     parser.registerPrefix(
       TokenType.IDENT,
       parser.parseIdentifier.bind(parser)
+    );
+
+    parser.registerPrefix(
+      TokenType.INT,
+      parser.parseIntegerLiteral.bind(parser)
     );
 
     return parser;
@@ -139,6 +145,17 @@ export class Parser {
   // Parse Functions
   private parseIdentifier (): Identifier {
     return Identifier.new(this.currentToken, this.currentToken.literal);
+  }
+
+  private parseIntegerLiteral(): IntegerLiteral | null {
+    const tokenLiteral = parseInt(this.currentToken.literal, 10);
+
+    if (isNaN(tokenLiteral)) {
+      this.errors.push(`Could not parse ${this.currentToken.literal} as integer`);
+      return null;
+    }
+
+    return IntegerLiteral.new(this.currentToken, tokenLiteral);
   }
 
   /**

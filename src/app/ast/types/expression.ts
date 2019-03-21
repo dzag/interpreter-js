@@ -27,3 +27,28 @@ export class Identifier implements Expression {
   }
 
 }
+
+export class IntegerLiteral implements Expression {
+  token: Token;
+  value: number;
+
+  static new (token: Token, value: number) {
+    const ident = new IntegerLiteral();
+
+    ident.token = token;
+    ident.value = value;
+
+    return ident;
+  }
+
+  __expressionNode (): any {}
+
+  tokenLiteral (): string {
+    return `${this.value}`;
+  }
+
+  string (): string {
+    return this.tokenLiteral();
+  }
+
+}

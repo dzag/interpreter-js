@@ -1,6 +1,6 @@
 import { Lexer } from '../lexer/lexer';
 import { Parser } from './parser';
-import { ExpressionStatement, Identifier, LetStatement, ReturnStatement, Statement } from '../ast/';
+import { ExpressionStatement, Identifier, IntegerLiteral, LetStatement, ReturnStatement, Statement } from '../ast/';
 
 describe('parse let statements', () => {
   const input = `
@@ -107,6 +107,36 @@ describe('test identifier expression', () => {
     expect(identifier.tokenLiteral()).toBe('foobar');
   });
 
+});
+
+describe('test integer expression', () => {
+  const input = '5;';
+
+  const lexer = Lexer.fromInput(input);
+  const parser = Parser.new(lexer);
+  const program = parser.parseProgram();
+
+  test('program should have only 1 statement', () => {
+    expect(program.statements.length).toBe(1);
+  });
+
+  const statement = program.statements[0] as ExpressionStatement;
+  test('statement should be ExpressionStatement', () => {
+    expect(statement).toBeInstanceOf(ExpressionStatement);
+  });
+
+  const identifier = statement.expression as IntegerLiteral;
+  test('expression should be an Identifier', () => {
+    expect(identifier).toBeInstanceOf(IntegerLiteral);
+  });
+
+  test('value should be "5"', () => {
+    expect(identifier.value).toBe(5);
+  });
+
+  test('token literal should be "5"', () => {
+    expect(identifier.tokenLiteral()).toBe('5');
+  });
 });
 
 function testLetStatement (statement: Statement, name: string) {
