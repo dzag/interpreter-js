@@ -19,5 +19,8 @@
     "ts-node-dev": "^1.0.0-pre.32",
     "tslib": "^1.9.3",
     "typescript": "^3.3.3333"
+  },
+  "dependencies": {
+    "@types/node": "^11.11.6"
   }
 }
