@@ -3,7 +3,7 @@ import { Parser } from './parser';
 import {
   Expression,
   ExpressionStatement,
-  Identifier,
+  Identifier, InfixExpression,
   IntegerLiteral,
   LetStatement,
   PrefixExpression,
@@ -183,6 +183,52 @@ describe('test parsing prefix expression', () => {
     });
 
     testIntegerLiteral(expression.right, integerValue);
+  }
+});
+
+describe('test parsing infix expression', () => {
+  const infixTests = [
+    { input: '5 + 5', leftValue: 5, operator: '+', rightValue: 5 },
+    { input: '5 - 5', leftValue: 5, operator: '-', rightValue: 5 },
+    { input: '5 * 5', leftValue: 5, operator: '*', rightValue: 5 },
+    { input: '5 / 5', leftValue: 5, operator: '/', rightValue: 5 },
+    { input: '5 > 5', leftValue: 5, operator: '>', rightValue: 5 },
+    { input: '5 < 5', leftValue: 5, operator: '<', rightValue: 5 },
+    { input: '5 == 5', leftValue: 5, operator: '==', rightValue: 5 },
+    { input: '5 != 5', leftValue: 5, operator: '!=', rightValue: 5 },
+  ];
+
+  for (const { input, leftValue, operator, rightValue } of infixTests) {
+    const lexer = Lexer.fromInput(input);
+    const parser = Parser.new(lexer);
+
+    test('parse without no errors', (done) => {
+      checkParserErrors(parser, done);
+    });
+
+    const program = parser.parseProgram();
+
+    test('program should have only 1 statement', () => {
+      expect(program.statements.length).toBe(1);
+    });
+
+    const statement = program.statements[0] as ExpressionStatement;
+    test('statement should be ExpressionStatement', () => {
+      expect(statement).toBeInstanceOf(ExpressionStatement);
+    });
+
+    const expression = statement.expression as InfixExpression;
+    test('expression should be an InfixExpression', () => {
+      expect(expression).toBeInstanceOf(InfixExpression);
+    });
+
+    testIntegerLiteral(expression.left, leftValue);
+
+    test(`expression operator should be ${operator}`, () => {
+      expect(expression.operator).toBe(operator);
+    });
+
+    testIntegerLiteral(expression.left, rightValue);
   }
 });
 

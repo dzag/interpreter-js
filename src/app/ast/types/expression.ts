@@ -83,3 +83,36 @@ export class PrefixExpression implements Expression {
   }
 
 }
+
+export class InfixExpression implements Expression {
+  token: Token;
+  left: Expression;
+  operator: string;
+  right: Expression;
+
+  static new(opts: { [p in keyof InfixExpression]?: InfixExpression[p] | any }) {
+    const expression =  new InfixExpression();
+
+    expression.token = opts.token;
+    expression.left = opts.left;
+    expression.operator = opts.operator;
+    expression.right = opts.right;
+
+    return expression;
+  }
+
+  __expressionNode (): any {}
+
+  tokenLiteral (): string {
+    return "";
+  }
+
+  string (): string {
+    return '(' +
+      this.left.string() +
+      ' ' + this.operator + ' ' +
+      this.right.string() +
+    ')';
+  }
+
+}
