@@ -10,3 +10,8 @@ or
 ```
 npx jest --watchAll
 ```
+
+## REPL
+```
+npm start
+```
