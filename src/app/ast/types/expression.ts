@@ -53,6 +53,31 @@ export class IntegerLiteral implements Expression {
 
 }
 
+export class BooleanLiteral implements Expression {
+  token: Token;
+  value: boolean;
+
+  static new(token: Token, value: boolean) {
+    const expression = new BooleanLiteral();
+
+    expression.token = token;
+    expression.value = value;
+
+    return expression;
+  }
+
+  __expressionNode (): any {
+  }
+
+  tokenLiteral (): string {
+    return this.token.literal;
+  }
+
+  string (): string {
+    return this.token.literal;
+  }
+}
+
 export class PrefixExpression implements Expression {
   token: Token;
   operator: string;

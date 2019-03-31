@@ -3,13 +3,16 @@ import { Parser } from './parser';
 import {
   Expression,
   ExpressionStatement,
-  Identifier, InfixExpression,
+  Identifier,
+  InfixExpression,
   IntegerLiteral,
   LetStatement,
   PrefixExpression,
   ReturnStatement,
-  Statement
+  Statement,
+  BooleanLiteral,
 } from '../ast/';
+import { isNumber, isString } from '../fns';
 
 describe('parse let statements', () => {
   const input = `
@@ -148,6 +151,41 @@ describe('test integer expression', () => {
   });
 });
 
+describe('test boolean expression', () => {
+  const input = 'false;';
+
+  const lexer = Lexer.fromInput(input);
+  const parser = Parser.new(lexer);
+
+  test('parse without no errors', (done) => {
+    checkParserErrors(parser, done);
+  });
+
+  const program = parser.parseProgram();
+
+  test('program should have only 1 statement', () => {
+    expect(program.statements.length).toBe(1);
+  });
+
+  const statement = program.statements[0] as ExpressionStatement;
+  test('statement should be ExpressionStatement', () => {
+    expect(statement).toBeInstanceOf(ExpressionStatement);
+  });
+
+  const boolean = statement.expression as BooleanLiteral;
+  test('expression should be an Boolean', () => {
+    expect(boolean).toBeInstanceOf(BooleanLiteral);
+  });
+
+  test('value should be "false"', () => {
+    expect(boolean.value).toBe(false);
+  });
+
+  test('token literal should be "false"', () => {
+    expect(boolean.tokenLiteral()).toBe('false');
+  });
+});
+
 describe('test parsing prefix expression', () => {
   const prefixTests = [
     { input: '!5', operator: '!', integerValue: 5 },
@@ -267,6 +305,51 @@ function testIntegerLiteral (exp: Expression, value: number) {
   test(`expression tokenLiteral() should be "${integerLiteral.value}"`, () => {
     expect(integerLiteral.tokenLiteral()).toBe(`${value}`);
   });
+}
+
+function testIdentifier (expression: Expression, value: string) {
+  const identifier = expression as Identifier;
+
+  test('expression should be Identifier', () => {
+    expect(identifier).toBeInstanceOf(Identifier);
+  });
+
+  test(`identifier.value should be ${value}`, () => {
+    expect(identifier.value).toBe(value);
+  });
+
+  test(`identifier.tokenLiteral() should be ${value}`, () => {
+    expect(identifier.tokenLiteral()).toBe(value);
+  });
+}
+
+function testInfixExpression (expression: Expression, left: any, operator: string, right: any) {
+
+  const infix = expression as InfixExpression;
+
+  test(`expression should be an InfixExpression`, () => {
+    expect(infix).toBeInstanceOf(InfixExpression);
+  });
+
+  testLiteralExpression(infix.left, left);
+
+  test(`operator should be ${operator}`, () => {
+    expect(infix.operator).toBe(operator);
+  });
+
+  testLiteralExpression(infix.right, right);
+}
+
+function testLiteralExpression (expression: Expression, expected: any) {
+
+  if (isNumber(expected)) {
+    return testIntegerLiteral(expression, expected);
+  }
+
+  if (isString(expected)) {
+    return testIdentifier(expression, expected);
+  }
+
 }
 
 function checkParserErrors (parser: Parser, done: any) {

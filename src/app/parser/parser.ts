@@ -2,6 +2,7 @@ import { Lexer } from '../lexer/lexer';
 import { Token } from '../token/token';
 import { TokenType } from '../token/token-type';
 import {
+  BooleanLiteral,
   Expression,
   ExpressionStatement,
   Identifier,
@@ -13,7 +14,7 @@ import {
   PrefixParseFn,
   Program,
   ReturnStatement,
-  Statement
+  Statement,
 } from '../ast';
 
 enum Precedence {
@@ -60,11 +61,14 @@ export class Parser {
     parser.nextToken();
 
     const parseIdentifier = parser.parseIdentifier.bind(parser);
+    const parseBooleanLiteral = parser.parseBooleanLiteral.bind(parser);
     const parseIntegerLiteral = parser.parseIntegerLiteral.bind(parser);
     const parsePrefixExpression = parser.parsePrefixExpression.bind(parser);
     const parseInfixExpression = parser.parseInfixExpression.bind(parser);
 
     parser.registerPrefix(TokenType.IDENT, parseIdentifier);
+    parser.registerPrefix(TokenType.TRUE, parseBooleanLiteral);
+    parser.registerPrefix(TokenType.FALSE, parseBooleanLiteral);
     parser.registerPrefix(TokenType.INT, parseIntegerLiteral);
     parser.registerPrefix(TokenType.BANG, parsePrefixExpression);
     parser.registerPrefix(TokenType.MINUS, parsePrefixExpression);
@@ -184,6 +188,10 @@ export class Parser {
     }
 
     return IntegerLiteral.new(this.currentToken, tokenLiteral);
+  }
+
+  private parseBooleanLiteral (): BooleanLiteral {
+    return BooleanLiteral.new(this.currentToken, this.currentTokenIs(TokenType.TRUE))
   }
 
   private parsePrefixExpression (): PrefixExpression | null {
