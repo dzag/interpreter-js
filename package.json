@@ -11,16 +11,14 @@
   "author": "Long Nguyen",
   "license": "ISC",
   "devDependencies": {
-    "@types/jest": "^24.0.11",
+    "@types/jest": "^24.0.13",
+    "@types/node": "^11.13.13",
     "jasmine-fail-fast": "^2.0.0",
-    "jest": "^24.7.1",
+    "jest": "^24.8.0",
     "ts-jest": "^24.0.2",
-    "ts-node": "^8.0.3",
-    "ts-node-dev": "^1.0.0-pre.32",
-    "tslib": "^1.9.3",
-    "typescript": "^3.4.2"
-  },
-  "dependencies": {
-    "@types/node": "^11.11.6"
+    "ts-node": "^8.2.0",
+    "ts-node-dev": "^1.0.0-pre.39",
+    "tslib": "^1.10.0",
+    "typescript": "^3.5.1"
   }
 }
